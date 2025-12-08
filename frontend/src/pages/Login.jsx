@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authcontext';
+import Register from './Register';
 
 const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
@@ -12,7 +13,9 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const 
+  const Register = ()=>{
+    navigate('/register')
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -144,7 +147,7 @@ const Login = () => {
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <button type="button" className="text-blue-600 hover:text-blue-700 font-semibold hover:underline">
+                <button onClick={Register} type="button" className="text-blue-600 hover:text-blue-700 font-semibold hover:underline">
                   Sign up
                 </button>
               </p>

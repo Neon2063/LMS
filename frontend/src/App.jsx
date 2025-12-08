@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import StudentDashboard from "./pages/StudentDashboard"
 import Authcontext from './context/authcontext'
+import Register from "./pages/Register";
 
 import Members from "./admin/Members";
 import Books from "./admin/Books";
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register/>}></Route>
           <Route path="/admin-dashboard" element={<AdminDashboard />}>
             <Route index element={<div className="text-2xl font-bold">Welcome to Admin Dashboard!</div>} />
               <Route path="members" element={<Members />} />
