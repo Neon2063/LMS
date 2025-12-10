@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 import Cards from '../../admin/Cards';
 import Members from '../../admin/Members';
 import Issused from '../../admin/Issused';
-import AdminBooks from '../../admin/AdminBooks';
-import AdminReturned from '../../admin/AdminReturned';
+import AdminBooks from '../../admin/Books';
+import AdminReturned from '../../admin/Returned';
 
 import StuCard from '../../student/StuCards'
 import StuBooks from '../../student/StuBooks'
