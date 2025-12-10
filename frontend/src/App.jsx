@@ -3,13 +3,14 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import StudentDashboard from "./pages/StudentDashboard"
 import Authcontext from './context/authcontext'
-import Register from "./pages/Register";
+import Register from "./pages/Register"
 
 import Members from "./admin/Members";
 import Books from "./admin/Books";
 import Issued from "./admin/Issused";       
-import ReturnedBooks from "./admin/Returned";
-import NotReturnedBooks from "./admin/NotReturn";
+import ReturnedBooks from "./admin/AdminReturned";
+import NotReturnedBooks from "./admin/AdminNotReturn";
+import Register from "./pages/Register";
 function App() {
   return (
     <Authcontext>
