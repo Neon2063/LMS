@@ -137,7 +137,8 @@ const Register = () => {
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
                 } disabled:opacity-50`}
               >
-                📚 Student
+
+                Student
               </button>
               <button
                 type="button"
@@ -149,7 +150,7 @@ const Register = () => {
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
                 } disabled:opacity-50`}
               >
-                👑 Admin
+                 Admin
               </button>
             </div>
           </div>
