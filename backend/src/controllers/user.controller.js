@@ -3,61 +3,63 @@ import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt"
 
 const registerUser = asyncHandler(async (req, res) => {
-    
 
-    
     //Handle user inputs from frontend as objects 
-    const {studentemail , Password , role} = req.body
-    console.log(studentemail)
-    console.log(Password)
-    
-    
+    const {studentemail , Password , role, kuid} = req.body
 
     // validations of correct format for empty
-    if(Object.values({studentemail,Password}).some(data =>String(data)?.trim()=="" )){
+    if(Object.values({studentemail,Password,kuid}).some(data =>String(data)?.trim()=="" )){
         return res.status(400).json({
+            success:false,
             message:"Empty feild"
         })
     }
-        
-    
+
     // email formatiing check
     const gmailFormat = /^.*@gmail\.com$/;
     if(!gmailFormat.test(studentemail)){
        return res.status(400).json({
+        success:false,
         message:"not in format"
        })
     }
 
-
     //checking if already exists 
-    const userExists = await User.findOne({
-        studentemail})
+    const userExist = await User.findOne({
+        $or:[{studentemail:studentemail}, {kuid:kuid}]
+} )
 
-        if(userExists){
+        if(userExist){
         return res.status(409).json({
-        messege:"lode23"
+        success:false,
+        messege:"User already exits"
        })
      }
-     // hashing password
-     const hashedPass = await bcrypt.hash(Password,10);
  
      // saving data in database 
-    const NewUser =  await User.create({
-        studentemail1:studentemail  ,
-        password1:Password  ,
-        role:role
+    const user =  await User.create({
+        studentemail:studentemail,
+        password:Password,
+        role:role,
+        kuid:kuid
     })
 
-    
-    return res.status(201).json({
+    const userCreated =  await User.findById(user._id).select("-password -refreshtoken")
+    if(!userCreated){
+        res.status(401).json({
+            success:false,
+            message:"failed to register user"
+        })
+         
+    }
+     
+
+     return res.status(201)
+     .json({
+        success:true,
         messege:"User created",
         user : NewUser
       })
-
-    
-
-      
 });
 
 // login User

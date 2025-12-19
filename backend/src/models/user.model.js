@@ -15,6 +15,10 @@ const userSchema = new Schema({
         requrired:true,
         trim:true
     },
+    kuid:{
+        type:Number,
+        required:true
+    },
     role:{
         type:String,
         required:true
@@ -32,7 +36,7 @@ const userSchema = new Schema({
 userSchema.pre("save",
    async function(){
     if(!this.isModified("password")) return ;
-    this.password1 = await bcrypt.hash(this.password1,10)
+    this.password1 = await bcrypt.hash(this.password,10)
    }
 )
   
@@ -54,7 +58,6 @@ userSchema.methods.generateRefreshToken = function(){
         expiresIn:process.env.REFRESH_TOKEN_EXPIRY
     })
 }
-
 
 // check password code 
 userSchema.methods.IsPasswordCorrect = async function (password) {
