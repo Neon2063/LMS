@@ -21,12 +21,12 @@ app.use(express.urlencoded({
 // router  logic
 import Userrouter from './routes/user.routes.js';
 
-// user register or login route
-app.use('/api/v1/users',Userrouter)
+app.use('/api/v1/library',Userrouter)
 
-// user books register or CRUD operation
+
+
 import BookRouter from './routes/book.routes.js'
-app.use('/api/v1/admin-dashboard',BookRouter)
+app.use('/api/v1/library',BookRouter)
 
 
 
