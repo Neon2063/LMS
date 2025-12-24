@@ -38,7 +38,7 @@ const Login = () => {
     };
 
     checkAutoLogin();
-  }, [navigate]);
+  }, []);
 
   // Form submission
   const handleSubmit = async (e) => {
@@ -53,7 +53,6 @@ const Login = () => {
 
       if (response.data.success) {
         login(response.data.user);
-        alert('Successfully Logged In');
 
         if (loginType === 'admin') navigate('/admin-dashboard');
         else navigate('/student-dashboard');
