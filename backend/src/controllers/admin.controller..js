@@ -1,6 +1,8 @@
 import { asyncHandler } from "../utils/asynchandler.js";
 import { Book } from "../models/book.model.js";
 import { cloudinaryUploader } from "../services/cloudinary.service.js";
+import { User } from "../models/user.model.js";
+
 
 const registerBook = asyncHandler(async (req, res) => {
   const { Title, Author, PublishedDate, Publication, descriptions } = req.body;
@@ -56,5 +58,50 @@ const registerBook = asyncHandler(async (req, res) => {
   });
 });
 
+const getMembers = asyncHandler(
+  async(req,res)=>{
 
-export { registerBook };
+    const users = await User.find().select("-password -refreshtoken");
+    console.log(users)
+
+
+    if(!users){
+      return res.status(401).json({
+        message:"unable to retrive data from users"
+      })
+    }
+
+
+    res.status(201).json({
+      success:true,
+      user:users
+      
+    })
+
+  }
+)
+
+const getBooks = asyncHandler(
+  async(req,res)=>{
+    const books = await Book.find()
+
+    if(!books){
+      return res.status(400).json({
+        success:false,
+        message:"Books not found"
+      })
+    }
+
+    return res.status(201).json({
+      success:true,
+      Books:books
+    })
+
+
+
+  }
+)
+
+
+
+export { registerBook,getMembers, getBooks };

@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     getUser().then(posts => setData(posts))
 
-  } ,[]) 
+  } ,[navigate]) 
   const out=async()=>{
      await axios.post(
       "http://localhost:8000/api/v1/library/logout",

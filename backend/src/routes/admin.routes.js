@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerBook} from "../controllers/admin.controller..js";
+import { registerBook,getMembers,getBooks} from "../controllers/admin.controller..js";
 import { upload } from "../middleware/multer.middleware.js";
 import { loginInCheck } from "../middleware/auth.middleware.js";
 
@@ -15,6 +15,8 @@ router.route("/registerbook").post(
   ]),
   registerBook
 );
+router.route("/members").get(getMembers)
 // router.route("/editbooks").post(loginInCheck, editbook);
+router.route('/getbooks').get(getBooks)
 
 export default router;
