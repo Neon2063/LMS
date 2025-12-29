@@ -408,9 +408,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Prabin K.C.**
 
-- GitHub: [@your-github-username](https://github.com/your-github-username)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- GitHub: [@kcprabin](https://github.com/kcprabin)
+- LinkedIn: [kcprabin](https://www.linkedin.com/in/prabin-k-c-36159036b/)
+- Email: kcprabin2063@gmail.com
 
 ---
 
