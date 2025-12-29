@@ -105,32 +105,22 @@ const getBooks = asyncHandler(
 
 const issues = asyncHandler(
   async(req,res)=>{
+    adminid = req.user
+    console.log(adminid)
 
-    const {studentemail , problem } = req.body
+    const { problem } = req.body
 
-    if(!studentemail || problem ){
+    if(!problem ){
       return res.status(400).json({
         success:false,
         message:"empty string"
       })
     }
-
-    const checkUser = await User.findOne({
-      studentemail
-    })
-
-    if(!checkUser){
-      return res.status(400).json({
-        success:false,
-        message:"Only registered user can give issue"
-      })
-    }
-
-    const Issue = Issue.create({
+    const issue =  await Issue.create({
       problem:problem
     })
 
-    if(!Issue){
+    if(!issue){
        return res.status(400).json({
         success:false,
         message:"unable to create entry error"
@@ -139,7 +129,7 @@ const issues = asyncHandler(
 
     return res.status(201).json({
       success:true,
-      issue:Issue
+      issue:issue
     })
 
   }
@@ -162,6 +152,8 @@ const issueForAdmin = asyncHandler(
 
   }
 )
+
+
 
 
 
