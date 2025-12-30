@@ -27,7 +27,7 @@ const Navbar = ({ toggleSidebar }) => {
   };
 
   return (
-    <div className='flex items-center justify-between h-20 px-4 lg:px-6 text-white shadow-2xl relative z-20 backdrop-blur-md bg-black bg-opacity-40 border-b border-white border-opacity-10'>
+    <div className='flex items-center justify-between h-20 px-4 lg:px-6 text-oklch(92.2% 0 0) shadow-none relative z-30 bg-transparent border-b border-white border-opacity-10'>
       <div className="flex items-center gap-4">
         <button 
           onClick={toggleSidebar}
@@ -37,7 +37,7 @@ const Navbar = ({ toggleSidebar }) => {
         </button>
         <div>
           <p className='text-sm text-gray-300'>Welcome back</p>
-          <p className='text-lg font-bold drop-shadow-lg'>{userName}</p>
+          <p className='text-lg font-bold drop-shadow-lg text-white'>{userName}</p>
         </div>
       </div>
 

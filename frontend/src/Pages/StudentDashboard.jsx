@@ -12,7 +12,7 @@ const StudentDashboard = () => {
       {/* Background Component - Fixed */}
       <BackgroundComponent />
       
-      {/* Content Overlay */}
+   
       <div className="flex relative z-20 min-h-screen">
         <Studentsidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         <div className="flex-1 flex flex-col ml-0 lg:ml-64">

@@ -5,7 +5,7 @@ const BackgroundComponent = () => {
 
   return (
     <>
-      {/* Fullscreen background image (should be behind everything) */}
+     
       <img
         src="/images/Background.jpg"
         alt="bookshelf background"

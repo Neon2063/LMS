@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaCheck, FaTachometerAlt, FaUsers, FaBook, FaThumbsUp, FaThumbsDown, FaTimes } from 'react-icons/fa';
 
+
+
 const Adminsidebar = ({ isOpen, setIsOpen }) => {
   return (
     <>
@@ -15,11 +17,20 @@ const Adminsidebar = ({ isOpen, setIsOpen }) => {
       
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out border-r border-teal-500 border-opacity-30 backdrop-blur-sm
+        fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900/80 via-gray-800/70 to-gray-900/80 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out border-r border-teal-500 border-opacity-30 backdrop-blur-sm
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="p-6 border-b border-teal-500 border-opacity-30 flex items-center justify-between bg-gradient-to-r from-teal-600 to-teal-700 bg-opacity-20 backdrop-blur">
-          <h3 className="text-2xl font-bold drop-shadow-lg">📚 Library MS</h3>
+        <div className="flex items-center gap-1">
+              <img
+                   src="/images/logo.png"
+                   className="h-15 w-15 object-contain object-[6] "
+                   alt="Yr Library Logo"
+                   />
+             <h3 className="text-xl font-bold tracking-wide">
+                 Yr Library
+              </h3>
+        </div>
+        <div>
           <button 
             onClick={() => setIsOpen(false)}
             className="lg:hidden text-white hover:text-teal-300 transition-colors hover:bg-teal-500 hover:bg-opacity-20 p-2 rounded-lg"

@@ -15,10 +15,10 @@ const StudentSidebar = ({ isOpen, setIsOpen }) => {
       
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out border-r border-teal-500 border-opacity-30 backdrop-blur-sm
+        fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900/80 via-gray-800/70 to-gray-900/80 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out border-r border-teal-500 border-opacity-30 backdrop-blur-sm
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="p-6 border-b border-teal-500 border-opacity-30 flex items-center justify-between bg-gradient-to-r from-teal-600 to-teal-700 bg-opacity-20 backdrop-blur">
+        <div className="p-6 border-b border-teal-500 border-opacity-30 flex items-center justify-between bg-gradient-to-r from-teal-600/20 to-teal-700/20 backdrop-blur">
           <h3 className="text-2xl font-bold drop-shadow-lg">📚 Library MS</h3>
           <button 
             onClick={() => setIsOpen(false)}
