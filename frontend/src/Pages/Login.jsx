@@ -53,19 +53,11 @@ const Login = () => {
 
       if (response.data.success) {
         login(response.data.user);
-<<<<<<< HEAD
-        alert("Successfully Logged In"); //yo hatau nu parne xa 
-        
-        if(loginType === 'admin') {
-          navigate('/admin-dashboard');
-        } else {
-          navigate('/student-dashboard');
-        }
-=======
+
 
         if (loginType === 'admin') navigate('/admin-dashboard');
         else navigate('/student-dashboard');
->>>>>>> main
+
       }
     } catch (err) {
       console.error(err);

@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
-import SearchBar from '../componets/dashboard/SearchBar';
-=======
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
->>>>>>> main
+
 function AdminBooks() {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
@@ -71,11 +68,8 @@ function AdminBooks() {
 
   return (
     <div className="p-6">
-<<<<<<< HEAD
-    <div className="ml-64 mt-12 min-h-screen bg-gray-100 px-8">
-      <div className="bg-white rounded-lg shadow p-4">
-        <SearchBar/>
-=======
+
+
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">Books Management</h1>
         <div>
@@ -127,10 +121,10 @@ function AdminBooks() {
             {books.length === 0 && <p className="mt-2 col-span-full">No books found.</p>}
           </div>
         )}
->>>>>>> main
+
       </div>
     </div>
-  </div>
+  
   );
 }
 
