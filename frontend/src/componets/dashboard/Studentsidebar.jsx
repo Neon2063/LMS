@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaTachometerAlt, FaBook, FaThumbsUp, FaTimes, FaHandshake } from 'react-icons/fa';
+import { FaTachometerAlt, FaBook, FaHandshake, FaUndoAlt, FaTimes } from 'react-icons/fa';
+
+
 
 const StudentSidebar = ({ isOpen, setIsOpen }) => {
   return (
@@ -8,78 +10,125 @@ const StudentSidebar = ({ isOpen, setIsOpen }) => {
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity"
           onClick={() => setIsOpen(false)}
         />
       )}
       
       {/* Sidebar */}
-      <div className={`
-        fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900/80 via-gray-800/70 to-gray-900/80 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out border-r border-teal-500 border-opacity-30 backdrop-blur-sm
+      <aside className={`
+        fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 shadow-sm z-50 
+        transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        <div className="p-6 border-b border-teal-500 border-opacity-30 flex items-center justify-between bg-gradient-to-r from-teal-600/20 to-teal-700/20 backdrop-blur">
-          <div className="flex items-center gap-1">
-              <img
-                   src="/images/logo.png"
-                   className="h-15 w-15 object-contain object-[6] "
-                   alt="Yr Library Logo"
-                   />
-             <h3 className="text-xl font-bold tracking-wide">
-                 Yr Library
-              </h3>
-        </div>
+        
+        
+        <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
+          <div className="flex items-center gap-2">
+            {/* Logo */}
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+              <FaBook className="w-4 h-4 text-white" />
+            </div>
+            
+            {/* Brand Name */}
+            <div>
+              <h3 className="text-lg font-bold text-gray-800">Yr Library</h3>
+            </div>
+          </div>
+
+          {/* Mobile Close Button */}
           <button 
             onClick={() => setIsOpen(false)}
-            className="lg:hidden text-white hover:text-teal-300 transition-colors hover:bg-teal-500 hover:bg-opacity-20 p-2 rounded-lg"
+            className="lg:hidden p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Close sidebar"
           >
-            <FaTimes className="w-6 h-6" />
+            <FaTimes className="w-5 h-5" />
           </button>
         </div>
 
-        <nav className="py-4 space-y-2 px-3">
-          <NavLink 
-            to="/student-dashboard" 
-            end
-            onClick={() => setIsOpen(false)}
-            className={({isActive}) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? "bg-gradient-to-r from-teal-500 to-teal-600 shadow-lg shadow-teal-500/50 text-white font-semibold" : "hover:bg-gray-700 hover:bg-opacity-50 text-gray-300 hover:text-white"}`}
-          >
-            <FaTachometerAlt className="text-lg" />
-            <span>Dashboard</span>
-          </NavLink>
-          
-          <NavLink 
-            to="/student-dashboard/books" 
-            onClick={() => setIsOpen(false)}
-            className={({isActive}) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? "bg-gradient-to-r from-purple-500 to-purple-600 shadow-lg shadow-purple-500/50 text-white font-semibold" : "hover:bg-gray-700 hover:bg-opacity-50 text-gray-300 hover:text-white"}`}
-          >
-            <FaBook className="text-lg" />
-            <span>Books</span>
-          </NavLink>
-          
-           <NavLink 
-            to="/student-dashboard/issue" 
-            onClick={() => setIsOpen(false)}
-            className={({isActive}) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? "bg-gradient-to-r from-red-500 to-red-600 shadow-lg shadow-red-500/50 text-white font-semibold" : "hover:bg-gray-700 hover:bg-opacity-50 text-gray-300 hover:text-white"}`}
-          >
-            <FaHandshake className="text-lg" />
-            <span>Issue</span>
-          </NavLink>
-
-          <NavLink 
-            to="/student-dashboard/returned" 
-            onClick={() => setIsOpen(false)}
-            className={({isActive}) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? "bg-gradient-to-r from-green-500 to-green-600 shadow-lg shadow-green-500/50 text-white font-semibold" : "hover:bg-gray-700 hover:bg-opacity-50 text-gray-300 hover:text-white"}`}
-          >
-            <FaThumbsUp className="text-lg" />
-            <span>Returned</span>
-          </NavLink>
-          
-         
+        {/* NAVIGATION MENU */}
+        <nav className="flex-1 overflow-y-auto py-6 px-3">
+          <div className="space-y-1">
+            
+            {/* Dashboard */}
+            <NavLink 
+              to="/student-dashboard" 
+              end
+              onClick={() => setIsOpen(false)}
+              className={({isActive}) => `
+                flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all
+                ${isActive 
+                  ? "bg-purple-50 text-purple-700 shadow-sm" 
+                  : "text-gray-700 hover:bg-gray-50"
+                }
+              `}
+            >
+              <FaTachometerAlt className="w-5 h-5 flex-shrink-0" />
+              <span>Dashboard</span>
+            </NavLink>
+            
+            {/* Browse Books */}
+            <NavLink 
+              to="/student-dashboard/books" 
+              onClick={() => setIsOpen(false)}
+              className={({isActive}) => `
+                flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all
+                ${isActive 
+                  ? "bg-purple-50 text-purple-700 shadow-sm" 
+                  : "text-gray-700 hover:bg-gray-50"
+                }
+              `}
+            >
+              <FaBook className="w-5 h-5 flex-shrink-0" />
+              <span>Browse Books</span>
+            </NavLink>
+            
+            {/* My Borrowed Books */}
+            <NavLink 
+              to="/student-dashboard/issue" 
+              onClick={() => setIsOpen(false)}
+              className={({isActive}) => `
+                flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all
+                ${isActive 
+                  ? "bg-purple-50 text-purple-700 shadow-sm" 
+                  : "text-gray-700 hover:bg-gray-50"
+                }
+              `}
+            >
+              <FaHandshake className="w-5 h-5 flex-shrink-0" />
+              <span>My Borrowed Books</span>
+            </NavLink>
+            
+            {/* Return History */}
+            <NavLink 
+              to="/student-dashboard/returned" 
+              onClick={() => setIsOpen(false)}
+              className={({isActive}) => `
+                flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all
+                ${isActive 
+                  ? "bg-purple-50 text-purple-700 shadow-sm" 
+                  : "text-gray-700 hover:bg-gray-50"
+                }
+              `}
+            >
+              <FaUndoAlt className="w-5 h-5 flex-shrink-0" />
+              <span>Return History</span>
+            </NavLink>
+          </div>
         </nav>
-      </div>
+
+        
+        <div className="border-t border-gray-200 p-4">
+          <div className="bg-blue-50 rounded-lg p-3">
+            <p className="text-xs font-semibold text-blue-900 mb-1">Library Hours</p>
+            <p className="text-xs text-blue-700">Mon-Fri: 8AM - 8PM</p>
+            <p className="text-xs text-blue-700">Sat-Sun: 10AM - 6PM</p>
+          </div>
+        </div>
+      </aside>
     </>
   );
 };
 
 export default StudentSidebar;
+
