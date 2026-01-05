@@ -68,10 +68,24 @@ export const getIssuedBooks = async () => {
 
 
 export const getUser = async () => {
-    const response = await fetch('${API_BASE_URL}/userName',{
-    method: "GET",});
-return await response.json();
-}
+  try {
+    
+    const response = await fetch(`${API_BASE_URL}/rememberme`, {
+      method: "GET",
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Failed to fetch user");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error in getUser:', error);
+    throw error;
+  }
+};
 
 export const borrowBook = async (bookId) => {
   try {
@@ -92,6 +106,29 @@ export const borrowBook = async (bookId) => {
     return await response.json();
   } catch (error) {
     console.error('Error borrowing book:', error);
+    throw error;
+  }
+};
+
+export const returnBookApi = async (issueId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/returnbook`, {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ issueId })
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to return book');
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error returning book:', error);
     throw error;
   }
 };
