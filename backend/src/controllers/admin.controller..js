@@ -63,9 +63,6 @@ const getMembers = asyncHandler(
   async(req,res)=>{
 
     const users = await User.find().select("-password -refreshtoken");
-    console.log(users)
-
-
     if(!users){
       return res.status(401).json({
         message:"unable to retrive data from users"
@@ -103,53 +100,9 @@ const getBooks = asyncHandler(
   }
 )
 
-const issues = asyncHandler(
-  async(req,res)=>{
-    
-    const { problem } = req.body
-
-    if(!problem ){
-      return res.status(400).json({
-        success:false,
-        message:"empty string"
-      })
-    }
-    const issue =  await Issue.create({
-      problem:problem
-    })
-
-    if(!issue){
-       return res.status(400).json({
-        success:false,
-        message:"unable to create entry error"
-      })
-    }
-
-    return res.status(201).json({
-      success:true,
-      issue:issue
-    })
-
-  }
-)
-
-const issueForAdmin = asyncHandler(
-  async(req, res)=>{
-    const problem = await Issue.find()
-
-    if(!problem){
-      return res.status(201).json({
-        message:"no problem"
-      })
-    }
-
-    return res.status(201).json({
-      issue:problem
-    })
 
 
-  }
-)
+
 
 
 
