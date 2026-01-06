@@ -2,7 +2,7 @@ import { asyncHandler } from "../utils/asynchandler.js";
 import { Book } from "../models/book.model.js";
 import { cloudinaryUploader } from "../services/cloudinary.service.js";
 import { User } from "../models/user.model.js";
-import { Issue} from "../models/issue.model.js";
+
 
 
 const registerBook = asyncHandler(async (req, res) => {
@@ -99,6 +99,15 @@ const getBooks = asyncHandler(
 
   }
 )
+const getProfile = asyncHandler(
+  async(req,res)=>{
+
+  })
+const updateProfile = asyncHandler(
+  async(req,res)=>{ })
+
+const deleteProfile = asyncHandler(
+  async(req,res)=>{ })  
 
 
 
@@ -106,6 +115,4 @@ const getBooks = asyncHandler(
 
 
 
-
-
-export { registerBook,getMembers, getBooks, issues, issueForAdmin };
+export { registerBook,getMembers, getBooks, getProfile, updateProfile, deleteProfile };
