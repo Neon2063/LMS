@@ -319,6 +319,7 @@ This project is open source. A specific license (for example, MIT) can be added 
 ### Original Author
 - **Name:** Prabin K.C.
 - **GitHub:** https://github.com/kcprabin
+- - **Email:** kcprabin2063@gmail.com
 - **LinkedIn:** https://www.linkedin.com/in/prabin-k-c-36159036b/
 
 ### Co-Author / Maintainer
